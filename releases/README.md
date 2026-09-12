@@ -1,3 +1,5 @@
 # Builds
 
-Versioned install ZIPs built from the source in `plugin.program.wifi/`.
+Versioned Kodi install ZIPs built from `plugin.program.wifi/`.
+
+Current: `plugin.program.wifi-1.0.9.zip`.
