@@ -30,13 +30,14 @@ def _run(cmd, timeout=15):
         result = subprocess.run(
             cmd,
             capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
             env=_nm_env(),
             timeout=timeout,
         )
-        return result.returncode, result.stdout.strip(), result.stderr.strip()
+        stdout = result.stdout.decode("utf-8")
+        stderr = result.stderr.decode("utf-8")
+        return result.returncode, stdout.strip(), stderr.strip()
+    except UnicodeDecodeError:
+        return -1, "", "NetworkManager returned invalid UTF-8"
     except subprocess.TimeoutExpired:
         return -1, "", "Timed out"
     except Exception as exc:
