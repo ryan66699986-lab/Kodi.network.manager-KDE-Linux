@@ -1,40 +1,28 @@
 # Security and privacy
 
-This project is intended to be a thin UI over NetworkManager. Network credentials and connection policy should remain owned by NetworkManager, not by the Kodi add-on.
+The add-on uses NetworkManager for connection handling. It should not own or rewrite saved network configuration.
 
 ## Secrets
 
-The add-on must never:
+Never log or commit:
 
-- log Wi-Fi passwords or PSKs;
-- write credentials into repository files;
-- create plaintext temporary password files;
-- hard-code user credentials;
-- expose secrets through Kodi status/error messages.
+- Wi-Fi passwords or PSKs
+- tokens or credentials
+- private certificates
+- raw connection profiles
 
-For a new secured network, Kodi obtains the password through a masked input dialog. The current implementation passes that value to `nmcli` as an argv element rather than through a shell command. This avoids shell interpolation, but the secret may still exist transiently in the process command line while `nmcli` runs. Eliminating that exposure would require a more complex NetworkManager secret-agent or D-Bus design and is not currently implemented.
+New Wi-Fi passwords come from Kodi's masked input dialog and are passed directly to `nmcli` without a shell. They are not written to disk or logged by the add-on. The password can still exist briefly in the `nmcli` process arguments while the command runs.
 
-## Existing profiles
+## Saved profiles
 
-The add-on should activate existing NetworkManager profiles unchanged. It must not rewrite saved credentials, key-management, 802.1X configuration, certificates, autoconnect policy, IP settings, DNS, routes, or permissions.
+Existing NetworkManager profiles are activated as-is. The add-on must not rewrite credentials, key management, 802.1X settings, certificates, autoconnect, IP settings, DNS, routes, or permissions.
 
-## Privilege model
+## Privileges
 
-The add-on should operate using the logged-in user's existing NetworkManager permissions.
-
-It must not depend on:
-
-- `sudo`;
-- setuid helpers;
-- privileged background daemons;
-- direct writes to NetworkManager or netplan configuration files.
+The add-on uses the current user's NetworkManager permissions. It should not require `sudo`, setuid helpers, privileged daemons, or direct writes to NetworkManager/netplan configuration files.
 
 ## Logs
 
-Logs may include SSID, interface, UUID, action, return code, and sanitized error text when needed for diagnostics.
+Diagnostic logs may contain SSIDs, interface names, profile UUIDs, return codes, and NetworkManager errors. Review logs before posting them publicly.
 
-Never include passwords, PSKs, secrets, session tokens, or unrelated personal data in logs, issues, screenshots, test fixtures, or commits.
-
-## Reporting security problems
-
-Do not post credentials or private connection profiles in a public issue. When reporting a bug, redact passwords, PSKs, tokens, private certificates, MAC addresses if sensitive, and any personally identifying network names if desired.
+Passwords, PSKs, tokens and other secrets must never be logged.
