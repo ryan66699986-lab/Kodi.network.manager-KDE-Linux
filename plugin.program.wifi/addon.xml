@@ -16,5 +16,7 @@
         <summary lang="en_GB">Manage Wi-Fi connections</summary>
         <description lang="en_GB">Scan and connect to Wi-Fi networks from inside Kodi using NetworkManager.</description>
         <platform>linux</platform>
+        <license>GPL-2.0-or-later</license>
+        <source>https://github.com/ryan66699986-lab/Kodi.network.manager-KDE-Linux</source>
     </extension>
 </addon>
