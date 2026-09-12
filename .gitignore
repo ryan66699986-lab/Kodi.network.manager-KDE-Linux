@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local build outputs
+*.zip
+build/
+dist/
+
+# Logs / diagnostics
+*.log
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+
+# Local environment files
+.env
+.env.*
