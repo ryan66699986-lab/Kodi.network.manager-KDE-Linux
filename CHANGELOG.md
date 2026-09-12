@@ -1,24 +1,21 @@
 # Changelog
 
-All notable project changes should be recorded here.
-
 ## Unreleased
 
-Development is continuing from the preserved v1.0.8 baseline. The current hardening work focuses on correctness around active-network detection, Wi-Fi interface discovery, NetworkManager escaping, duplicate BSSID handling, open-network normalization, safe disconnect semantics, scan error reporting, and Kodi list refresh behaviour.
+Work since v1.0.8 is focused on fixing active-network detection, interface discovery, escaped NetworkManager values, duplicate BSSIDs, open-network handling, disconnect behavior, scan errors and Kodi list refresh.
 
 ## 1.0.8
 
-Baseline development snapshot preserved in this repository.
+Baseline snapshot.
 
-Key behaviour at this point:
+Included at this point:
 
-- controller-friendly Kodi Wi-Fi list
-- live NetworkManager-backed scanning
-- NetworkManager saved-profile activation
-- new open and personal secured network connection paths
-- active network disconnect action
+- Kodi Wi-Fi list
+- live NetworkManager scans
+- saved-profile activation
+- new open and WPA/WPA2/WPA3 personal network connection
+- disconnect action
 - enterprise-network guardrails
-- post-connect stability verification
-- no direct profile modification, deletion, netplan editing, or custom autoconnect implementation
+- post-connect verification
 
-Known issues in 1.0.8 are documented in the repository README and development notes. This version is retained as a reproducible baseline rather than presented as a finished community release.
+The exact v1.0.8 ZIP is kept in `baseline/` and on branch `baseline/v1.0.8`.
