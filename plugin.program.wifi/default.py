@@ -288,7 +288,7 @@ def show_networks(ifname):
     else:
         for network in networks:
             if network["connected"]:
-                prefix = "[B][COLOR green]✓[/COLOR] "
+                prefix = "[B][COLOR green]v[/COLOR] "
                 suffix = "[/B]"
             else:
                 prefix = "  "
