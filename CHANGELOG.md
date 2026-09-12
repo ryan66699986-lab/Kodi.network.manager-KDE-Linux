@@ -1,8 +1,20 @@
 # Changelog
 
-## Unreleased
+## 1.0.9
 
-Work since v1.0.8 is focused on fixing active-network detection, interface discovery, escaped NetworkManager values, duplicate BSSIDs, open-network handling, disconnect behavior, scan errors and Kodi list refresh.
+- fixed active SSID detection (`IN-USE` / `*`)
+- made saved-profile SSID lookup safe for escaped NetworkManager values
+- normalised blank and `--` security fields to `Open`
+- fixed duplicate-BSSID handling so the connected AP always wins
+- accepted `SIGNAL=0`
+- removed the `nmcli device disconnect` fallback
+- separated scan failures from empty scan results
+- skipped malformed `nmcli` rows instead of crashing the add-on
+- verified saved-profile activation by both SSID and UUID
+- switched connect/disconnect/refresh UI updates to `Container.Refresh`
+- removed the `wlan0` fallback; Wi-Fi interfaces are selected from NetworkManager
+
+Install ZIP: `releases/plugin.program.wifi-1.0.9.zip`
 
 ## 1.0.8
 
