@@ -31,6 +31,8 @@ def _run(cmd, timeout=15):
             cmd,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             env=_nm_env(),
             timeout=timeout,
         )
