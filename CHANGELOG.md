@@ -13,6 +13,8 @@
 - verified saved-profile activation by both SSID and UUID
 - switched connect/disconnect/refresh UI updates to `Container.Refresh`
 - removed the `wlan0` fallback; Wi-Fi interfaces are selected from NetworkManager
+- highlighted the connected network with a check mark and bold row
+- added GPL-2.0-or-later metadata and license files
 
 Install ZIP: `releases/plugin.program.wifi-1.0.9.zip`
 
