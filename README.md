@@ -1,44 +1,40 @@
 # Kodi Network Manager for Linux
 
-Kodi Program add-on providing a controller-friendly front end to NetworkManager (`nmcli`) for Wi-Fi discovery, connection, disconnection, and refresh.
+A Kodi Program add-on for managing Wi-Fi through NetworkManager (`nmcli`) without leaving Kodi.
 
-The project is intentionally narrow: Kodi presents the UI, while NetworkManager remains the source of truth for devices, saved profiles, credentials, and normal autoconnect behaviour.
+Kodi handles the UI. NetworkManager keeps control of devices, saved connections, credentials and autoconnect.
 
 ## Status
 
-The repository is currently based on the preserved `plugin.program.wifi` **v1.0.8** development baseline. v1.0.8 is not presented as a finished community release; hardening work is continuing on newer versions.
-
-The exact v1.0.8 ZIP is archived under `baseline/`, and branch `baseline/v1.0.8` preserves that baseline independently from ongoing work on `main`.
+Development currently starts from `plugin.program.wifi` v1.0.8. The exact v1.0.8 ZIP is kept in `baseline/`, and `baseline/v1.0.8` preserves the same snapshot while work continues on `main`.
 
 ## Features
 
-- controller-friendly Wi-Fi management from inside Kodi
-- live NetworkManager-backed Wi-Fi scans
-- current nearby SSIDs only; no separate persistent network database
-- activation of existing saved NetworkManager profiles
-- connection to new open and WPA/WPA2/WPA3 personal networks
-- Disconnect / Cancel handling for the active network
-- support for saved enterprise profiles without rewriting them
-- refusal to invent configuration for new 802.1X/EAP networks
-- post-connect verification before reporting success
-- no `sudo`, custom daemon, profile deletion, netplan editing, or custom autoconnect implementation
+- controller-friendly Wi-Fi list inside Kodi
+- live NetworkManager scans
+- connects to new open and WPA/WPA2/WPA3 personal networks
+- reuses saved NetworkManager profiles
+- disconnects the active Wi-Fi connection
+- supports saved enterprise profiles without editing them
+- leaves new 802.1X/EAP setup to the system network manager
+- verifies the selected SSID before reporting a successful connection
+
+It does not edit netplan, rewrite saved profiles, delete connections, replace autoconnect, or require `sudo`.
 
 ## Requirements
 
-- Kodi 21 or newer
+- Kodi 21+
 - Linux
-- NetworkManager with `nmcli`
+- NetworkManager and `nmcli`
 - Wi-Fi managed by NetworkManager
-- user-level permission to scan and activate Wi-Fi connections
+- permission for the Kodi user to scan and activate connections
 
-See [docs/INSTALL.md](docs/INSTALL.md) for installation and operating scope.
+## Docs
 
-## Development documentation
-
+- [Installation](docs/INSTALL.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Testing](docs/TESTING.md)
-- [Installation](docs/INSTALL.md)
-- [Security and privacy](SECURITY.md)
+- [Security](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)
 
@@ -49,8 +45,8 @@ See [docs/INSTALL.md](docs/INSTALL.md) for installation and operating scope.
 
 ## Privacy
 
-The repository must not contain real test-environment SSIDs, Wi-Fi passwords, NetworkManager connection UUIDs, MAC/BSSID values, access tokens, or unreviewed runtime logs. Runtime Kodi/NetworkManager logs may themselves contain local network identifiers and should be reviewed before being posted publicly.
+Do not commit real Wi-Fi passwords, private SSIDs, NetworkManager UUIDs, MAC/BSSID values, tokens, or raw logs from a live system.
 
 ## License
 
-No project license has been selected yet. A license should be chosen before presenting the project as a general public release for redistribution/contribution.
+TBD.
