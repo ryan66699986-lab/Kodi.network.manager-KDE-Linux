@@ -1,52 +1,45 @@
 # Contributing
 
-This project aims to remain a small Kodi front end to NetworkManager rather than becoming a replacement network stack.
+Keep the add-on small. It should use NetworkManager, not replace it.
 
-## Design rules
+## Rules
 
-Changes should preserve these boundaries:
-
-- NetworkManager remains the source of truth.
-- Existing saved profiles should be activated, not rewritten.
-- Do not edit netplan, wpa_supplicant, DNS, routes, or autoconnect policy.
-- Do not add `sudo`, background daemons, dispatcher scripts, or custom services.
+- Reuse existing NetworkManager profiles instead of rewriting them.
+- Do not edit netplan, wpa_supplicant, DNS, routes, or autoconnect settings.
+- Do not add `sudo`, daemons, dispatcher scripts, or helper services.
 - Do not delete NetworkManager profiles.
-- Prefer documented `nmcli` behaviour and Kodi APIs over custom networking logic.
-- New functionality should remain controller-friendly inside Kodi.
+- Use documented `nmcli` and Kodi APIs.
+- Keep the UI usable with a controller.
 
-## Security and privacy
+## Privacy
 
-Never commit:
+Do not commit:
 
-- real SSIDs from testing
+- real test SSIDs
 - Wi-Fi passwords or PSKs
-- NetworkManager connection UUIDs copied from a live system
-- MAC addresses/BSSIDs from a private environment
-- session tokens, API keys, or credentials
-- unreviewed Kodi or NetworkManager logs
+- live NetworkManager UUIDs
+- private MAC/BSSID values
+- tokens or credentials
+- raw Kodi or NetworkManager logs
 
-Use generic examples such as `HomeWiFi`, `Guest`, `wlp2s0`, and placeholder UUIDs in documentation and tests.
+Use generic examples in docs and tests.
 
-Runtime diagnostics should not log passwords or other secrets. SSIDs and profile identifiers may still be sensitive in user logs, so diagnostic output should be kept minimal and sanitized where practical.
+## Testing
 
-## Testing expectations
-
-Before proposing a behavioural change, test the narrowest relevant path and avoid modifying the system network configuration during automated checks.
-
-At minimum verify:
+Before sending a change, check the part you touched. At minimum:
 
 - Python syntax
-- `addon.xml` validity
-- NetworkManager command construction
-- parsing of spaces, Unicode, escaped colons, and backslashes
+- `addon.xml`
+- `nmcli` command construction
+- SSIDs with spaces, Unicode, `:` and `\\`
 - no `shell=True`
 - no `sudo`
 - no profile modify/delete calls
-- no netplan changes
+- no netplan writes
 - no password logging
 
-Real disconnect/reconnect testing should be performed manually on a test machine because it can interrupt connectivity.
+Disconnect/reconnect tests should be done manually on a test machine because they can interrupt the active connection.
 
-## Releases
+## Builds
 
-Development builds should not overwrite preserved baseline ZIPs. Keep versioned ZIPs reproducible and record notable changes in `CHANGELOG.md`.
+Keep old baseline ZIPs intact. Use a new version number for each build and update `CHANGELOG.md` when behavior changes.
