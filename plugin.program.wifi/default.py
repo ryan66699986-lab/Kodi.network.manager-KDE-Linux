@@ -287,13 +287,20 @@ def show_networks(ifname):
         xbmcgui.Dialog().ok("Wi-Fi", "Wi-Fi scan failed: {}".format(_short_error(scan_error)))
     else:
         for network in networks:
-            prefix = "[COLOR green]✓[/COLOR] " if network["connected"] else "  "
-            label = "{}{}{} — {}% — {}".format(
+            if network["connected"]:
+                prefix = "[B][COLOR green]✓[/COLOR] "
+                suffix = "[/B]"
+            else:
+                prefix = "  "
+                suffix = ""
+
+            label = "{}{}{} — {}% — {}{}".format(
                 prefix,
                 network["ssid"],
                 _signal_bar(network["signal"]),
                 network["signal"],
                 network["security"],
+                suffix,
             )
             item = xbmcgui.ListItem(label=label)
             item.setInfo("programs", {"title": network["ssid"]})
