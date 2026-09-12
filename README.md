@@ -1,0 +1,1 @@
+# Kodi.network.manager-KDE-Linux
