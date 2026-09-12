@@ -34,6 +34,7 @@ It does not edit netplan, rewrite saved profiles, delete connections, replace au
 - [Installation](docs/INSTALL.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Testing](docs/TESTING.md)
+- [v1.0.8 provenance](docs/PROVENANCE.md)
 - [Security](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)
