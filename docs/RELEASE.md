@@ -27,4 +27,10 @@ plugin.program.wifi/
 └── LICENSE.txt
 ```
 
-The release ZIP goes in `releases/`.
+Build a release ZIP directly from the matching release branch:
+
+```bash
+git archive --format=zip --prefix=plugin.program.wifi/ release/v1.0.9:plugin.program.wifi -o plugin.program.wifi-1.0.9.zip
+```
+
+Do not keep a ZIP in the repository if it no longer matches the release branch.
