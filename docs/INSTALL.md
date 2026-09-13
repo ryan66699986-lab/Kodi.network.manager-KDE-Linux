@@ -10,13 +10,23 @@
 
 On a normal KDE Plasma desktop using NetworkManager, these requirements are usually already met.
 
-## Install from ZIP
+## Build the install ZIP
 
-1. Download `releases/plugin.program.wifi-1.0.9.zip`.
-2. In Kodi, open **Add-ons**.
-3. Choose **Install from zip file**.
-4. Select the ZIP.
-5. Open **Program add-ons → Wi-Fi**.
+From a clone of the repository:
+
+```bash
+git fetch --all
+git archive --format=zip --prefix=plugin.program.wifi/ release/v1.0.9:plugin.program.wifi -o plugin.program.wifi-1.0.9.zip
+```
+
+This produces the Kodi add-on layout directly from the release branch.
+
+## Install in Kodi
+
+1. Open **Add-ons**.
+2. Choose **Install from zip file**.
+3. Select `plugin.program.wifi-1.0.9.zip`.
+4. Open **Program add-ons → Wi-Fi**.
 
 No system files are installed and no service is added.
 
@@ -24,7 +34,7 @@ No system files are installed and no service is added.
 
 The list comes from the current NetworkManager scan.
 
-- active network: shown with a check mark and offers `Disconnect` / `Cancel`
+- active network: shown in bold with a green `v` marker and offers `Disconnect` / `Cancel`
 - saved network: activates the existing profile
 - new open network: connects without a Wi-Fi password
 - new WPA/WPA2/WPA3 personal network: asks for a password using Kodi's on-screen keyboard
