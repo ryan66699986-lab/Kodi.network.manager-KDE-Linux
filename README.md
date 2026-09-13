@@ -12,11 +12,13 @@ Current release: **1.0.9**.
 - source: `plugin.program.wifi/`
 - original v1.0.8 baseline: `baseline/` and branch `baseline/v1.0.8`
 
+The 1.0.9 flow has been tested on the original development system and on a separate real-world Wi-Fi network through Kodi.
+
 ## Features
 
 - controller-friendly Wi-Fi list inside Kodi
 - live NetworkManager scans
-- connected network shown with a check mark
+- connected network shown in bold with a green `v` marker
 - connects to new open and WPA/WPA2/WPA3 personal networks
 - reuses saved NetworkManager profiles
 - disconnects the active Wi-Fi connection
@@ -24,6 +26,7 @@ Current release: **1.0.9**.
 - leaves new 802.1X/EAP setup to the system network manager
 - verifies the selected SSID before reporting success
 - selects the Wi-Fi interface from NetworkManager instead of assuming `wlan0`
+- decodes `nmcli` output explicitly as UTF-8 instead of relying on Kodi's inherited locale
 
 It does not edit netplan, rewrite saved profiles, delete connections, replace autoconnect, or require `sudo`.
 
