@@ -13,8 +13,10 @@
 - verified saved-profile activation by both SSID and UUID
 - switched connect/disconnect/refresh UI updates to `Container.Refresh`
 - removed the `wlan0` fallback; Wi-Fi interfaces are selected from NetworkManager
-- highlighted the connected network with a check mark and bold row
+- highlighted the connected network with a bold row and green ASCII marker
+- made `nmcli` output decoding independent of Kodi/system locale
 - added GPL-2.0-or-later metadata and license files
+- confirmed scan, password entry and connection on a separate real-world Wi-Fi network through Kodi
 
 Install ZIP: `releases/plugin.program.wifi-1.0.9.zip`
 
