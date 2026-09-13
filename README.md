@@ -48,6 +48,14 @@ Not handled by this add-on:
 - captive-portal web login
 - static IP, DNS, route, VPN or hotspot configuration
 
+See [Compatibility](docs/COMPATIBILITY.md) for the upstream API/CLI compatibility notes.
+
+## Prior art
+
+Kodi previously had a `Network-Manager` program add-on for XBMC/XBMCbuntu-era systems. The Kodi wiki describes it as a NetworkManager 0.9 front-end and the page was last edited in 2015.
+
+This project is a separate implementation for current Linux systems using Kodi's Python 3 add-on API and current `nmcli` commands.
+
 ## Install
 
 Build the Kodi install ZIP from the release branch with standard Git tooling:
