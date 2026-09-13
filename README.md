@@ -8,8 +8,8 @@ Kodi handles the UI. NetworkManager keeps control of devices, saved connections,
 
 Current release: **1.0.9**.
 
-- [download v1.0.9](releases/plugin.program.wifi-1.0.9.zip)
 - source: `plugin.program.wifi/`
+- release branch: `release/v1.0.9`
 - original v1.0.8 baseline: `baseline/` and branch `baseline/v1.0.8`
 
 The 1.0.9 flow has been tested on the original development system and on a separate real-world Wi-Fi network through Kodi.
@@ -50,7 +50,13 @@ Not handled by this add-on:
 
 ## Install
 
-Download `releases/plugin.program.wifi-1.0.9.zip`, then in Kodi use **Add-ons → Install from zip file**.
+Build the Kodi install ZIP from the release branch with standard Git tooling:
+
+```bash
+git archive --format=zip --prefix=plugin.program.wifi/ release/v1.0.9:plugin.program.wifi -o plugin.program.wifi-1.0.9.zip
+```
+
+Then in Kodi use **Add-ons → Install from zip file**.
 
 See [Installation](docs/INSTALL.md) for details.
 
