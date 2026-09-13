@@ -12,6 +12,8 @@ Test against a working NetworkManager setup. Do not use automated tests that rew
 
 This is only the original test machine, not a platform requirement.
 
+The 1.0.9 connection flow has also been exercised on a separate real-world Wi-Fi network: scan, password entry, connection and post-connect verification all completed through Kodi.
+
 ## Read-only checks
 
 ```bash
